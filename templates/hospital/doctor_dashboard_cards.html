@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Cards</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .market-updates {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1000px;
+    }
+
+    .market-update-block {
+      flex: 1 1 300px;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: #0d6efd;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+
+    .market-update-block.bg-danger {
+      background-color: #dc3545;
+    }
+
+    .market-update-block.bg-warning {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    .market-update-block.bg-primary {
+      background-color: #0d6efd;
+    }
+
+    .market-update-block:hover {
+      background: #343a40;
+      color: #fff;
+    }
+
+    .market-update-left h3 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .market-update-left h4 {
+      font-size: 1rem;
+      margin: 0.25rem 0 0;
+    }
+
+    .market-update-right i {
+      font-size: 2.5rem;
+      background: white;
+      color: inherit;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="market-updates">
+    <div class="market-update-block bg-danger">
+      <div class="market-update-left">
+        <h3>{{appointmentcount}}</h3>
+        <h4>Appointments For You</h4>
+      </div>
+      <div class="market-update-right">
+        <i class="fa fa-calendar"></i>
+      </div>
+    </div>
+    <div class="market-update-block bg-warning">
+      <div class="market-update-left">
+        <h3>{{patientcount}}</h3>
+        <h4>Patients Under You</h4>
+      </div>
+      <div class="market-update-right">
+        <i class="fa fa-user-o"></i>
+      </div>
+    </div>
+    <div class="market-update-block bg-primary">
+      <div class="market-update-left">
+        <h3>{{patientdischarged}}</h3>
+        <h4>Your Patients Discharged</h4>
+      </div>
+      <div class="market-update-right">
+        <i class="fa fa-check-circle-o"></i>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

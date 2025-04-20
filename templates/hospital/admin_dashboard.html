@@ -1,0 +1,132 @@
+{% extends 'hospital/admin_base.html' %}
+{% load static %}
+{% block content %}
+{% include 'hospital/admin_dashboard_cards.html' %}
+
+<style>
+  .dashboard-panel {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    margin: 2rem 2% 0 2%;
+    flex: 1;
+    min-width: 350px;
+  }
+
+  .dashboard-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .dashboard-table thead {
+    background: #f4f7f9;
+    font-weight: 600;
+  }
+
+  .dashboard-table th,
+  .dashboard-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 0.95rem;
+  }
+
+  .dashboard-table tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  .label {
+    padding: 0.3em 0.6em;
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .label-primary {
+    background-color: #2980b9;
+    color: #fff;
+  }
+
+  .label-success {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+
+  .dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+</style>
+
+<div class="dashboard-container">
+  <div class="dashboard-panel">
+    <h6 class="dashboard-title">Recent Doctors</h6>
+    <table class="dashboard-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Mobile</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in doctors %}
+        <tr>
+          <td>{{ d.get_name }}</td>
+          <td>{{ d.department }}</td>
+          <td>{{ d.mobile }}</td>
+          {% if d.status %}
+          <td><span class="label label-primary">Permanent</span></td>
+          {% else %}
+          <td><span class="label label-success">On Hold</span></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dashboard-panel">
+    <h6 class="dashboard-title">Recent Patients</h6>
+    <table class="dashboard-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Symptoms</th>
+          <th>Mobile</th>
+          <th>Address</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in patients %}
+        <tr>
+          <td>{{ p.get_name }}</td>
+          <td>{{ p.symptoms }}</td>
+          <td>{{ p.mobile }}</td>
+          <td>{{ p.address }}</td>
+          {% if p.status %}
+          <td><span class="label label-primary">Admitted</span></td>
+          {% else %}
+          <td><span class="label label-success">On Hold</span></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

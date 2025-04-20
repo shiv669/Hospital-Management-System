@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Patient Info Cards</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+    }
+  
+    .dashboard-wrapper {
+      margin-left: 240px; /* Adjust according to your sidebar width */
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  
+    .market-updates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1000px;
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .market-update-block {
+      flex: 1 1 300px;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: #0d6efd;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+  
+    .market-update-block.bg-danger {
+      background-color: #dc3545;
+    }
+  
+    .market-update-block.bg-warning {
+      background-color: #ffc107;
+      color: #000;
+    }
+  
+    .market-update-block.bg-primary {
+      background-color: #0d6efd;
+    }
+  
+    .market-update-block.bg-dark {
+      background-color: #343a40;
+    }
+  
+    .market-update-block:hover {
+      transform: translateY(-5px);
+    }
+  
+    .market-update-left h3 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  
+    .market-update-left h4 {
+      font-size: 1rem;
+      margin-top: 0.25rem;
+      font-weight: normal;
+    }
+  
+    .market-update-right i {
+      font-size: 2.5rem;
+      background: white;
+      color: inherit;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+  </style>
+  
+  <div class="dashboard-wrapper">
+    <div class="market-updates">
+      <div class="market-update-block bg-danger">
+        <div class="market-update-left">
+          <h3>{{doctorName}}</h3>
+          <h4>Doctor Name</h4>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-user-o"></i>
+        </div>
+      </div>
+  
+      <div class="market-update-block bg-warning">
+        <div class="market-update-left">
+          <h3>{{symptoms}}</h3>
+          <h4>Symptoms</h4>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-heartbeat"></i>
+        </div>
+      </div>
+  
+      <div class="market-update-block bg-primary">
+        <div class="market-update-left">
+          <h3>{{doctorMobile}}</h3>
+          <h4>Doctor Mobile</h4>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-mobile"></i>
+        </div>
+      </div>
+  
+      <div class="market-update-block bg-dark">
+        <div class="market-update-left">
+          <h3>{{doctorAddress}}</h3>
+          <h4>Doctor Address</h4>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-map-marker"></i>
+        </div>
+      </div>
+  
+      <div class="market-update-block bg-warning">
+        <div class="market-update-left">
+          <h3>{{doctorDepartment}}</h3>
+          <h4>Doctor Department</h4>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-stethoscope"></i>
+        </div>
+      </div>
+  
+      <div class="market-update-block bg-danger">
+        <div class="market-update-left">
+          <h3>{{admitDate}}</h3>
+          <h4>Admit Date</h4>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>

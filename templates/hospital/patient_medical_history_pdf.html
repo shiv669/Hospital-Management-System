@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Medical History</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color: #444;
+        }
+        h1 {
+            font-size: 24px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        h3 {
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .patient-info p, .details p {
+            margin: 5px 0;
+        }
+        .patient-info strong, .details strong {
+            display: inline-block;
+            width: 150px; /* Adjust as needed */
+        }
+        .no-data {
+            font-style: italic;
+            color: #777;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 10px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medical History Report</h1>
+
+    <div class="section patient-info">
+        <h2>Patient Information</h2>
+        <p><strong>Patient Name:</strong> {{ patient.get_name }}</p>
+        <p><strong>Mobile:</strong> {{ patient.mobile }}</p>
+        <p><strong>Address:</strong> {{ patient.address }}</p>
+        <p><strong>Symptoms Registered:</strong> {{ patient.symptoms }}</p>
+        <p><strong>Admit Date:</strong> {{ patient.admitDate }}</p>
+        {% if patient.assignedDoctorId %}
+            <p><strong>Initially Assigned Doctor:</strong> {{ patient.get_assigned_doctor_name }}</p>
+        {% endif %}
+    </div>
+
+    <div class="section appointments">
+        <h2>Appointment History</h2>
+        {% if appointments %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Doctor</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appt in appointments %}
+                    <tr>
+                        <td>{{ appt.appointmentDate }}</td>
+                        <td>{{ appt.doctorName }}</td>
+                        <td>{{ appt.description }}</td>
+                        <td>{% if appt.status %}Completed{% else %}Pending{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="no-data">No appointment history found.</p>
+        {% endif %}
+    </div>
+
+    <div class="section prescriptions">
+        <h2>Prescription History</h2>
+        {% if prescriptions %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Doctor</th>
+                        <th>Medication</th>
+                        <th>Dosage</th>
+                        <th>Instructions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pres in prescriptions %}
+                    <tr>
+                        <td>{{ pres.date }}</td>
+                        <td>{{ pres.doctor.get_name }}</td>
+                        <td>{{ pres.medication }}</td>
+                        <td>{{ pres.dosage }}</td>
+                        <td>{{ pres.instructions }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="no-data">No prescription history found.</p>
+        {% endif %}
+    </div>
+
+    <div class="section discharge-summary">
+        <h2>Discharge Summary</h2>
+        {% if discharge_details %}
+            <div class="details">
+                <p><strong>Patient Name:</strong> {{ discharge_details.patientName }}</p>
+                <p><strong>Assigned Doctor:</strong> {{ discharge_details.assignedDoctorName }}</p>
+                <p><strong>Address:</strong> {{ discharge_details.address }}</p>
+                <p><strong>Mobile:</strong> {{ discharge_details.mobile }}</p>
+                <p><strong>Symptoms:</strong> {{ discharge_details.symptoms }}</p>
+                <p><strong>Admit Date:</strong> {{ discharge_details.admitDate }}</p>
+                <p><strong>Release Date:</strong> {{ discharge_details.releaseDate }}</p>
+                <p><strong>Days Spent:</strong> {{ discharge_details.daySpent }}</p>
+                <hr>
+                <p><strong>Medicine Cost:</strong> {{ discharge_details.medicineCost }}</p>
+                <p><strong>Room Charge:</strong> {{ discharge_details.roomCharge }}</p>
+                <p><strong>Doctor Fee:</strong> {{ discharge_details.doctorFee }}</p>
+                <p><strong>Other Charges:</strong> {{ discharge_details.OtherCharge }}</p>
+                <hr>
+                <p><strong>Total Bill:</strong> {{ discharge_details.total }}</p>
+            </div>
+        {% else %}
+            <p class="no-data">No discharge summary found.</p>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        Generated on: {% now "Y-m-d H:i:s" %}
+    </div>
+
+</body>
+</html>

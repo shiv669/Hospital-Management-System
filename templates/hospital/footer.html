@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Footer</title>
+
+  <style>
+    footer {
+      padding: 0;
+      background-color: black;
+      margin: 0;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    /* Copyright underline animation (comes in goes out) */
+    .copyright-animated {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .copyright-animated::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: width 0.4s ease-in-out;
+    }
+
+    .copyright-animated:hover::after {
+      width: 100%;
+    }
+
+    .footer-copyright {
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="footer-copyright">
+            <p class="copyright-animated">
+              Made in KKWIEER <br>
+              Copyright &copy; 2025 AI&amp;DS
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

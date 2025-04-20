@@ -1,0 +1,79 @@
+{% extends 'hospital/doctor_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<br><br>
+<!------ Prescription Form Page ---------->
+<form method="post" class="form-content">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" class="form-control" value="{{ patient.get_name }}" readonly>
+      </div>
+      <div class="form-group">
+        <label for="doctorName">Doctor Name:</label>
+        <input type="text" class="form-control" value="{{ doctor.get_name }}" readonly>
+      </div>
+      <div class="form-group">
+        {% render_field prescriptionForm.medication class="form-control" placeholder="Medication" %}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        {% render_field prescriptionForm.dosage class="form-control" placeholder="Dosage" %}
+      </div>
+      <div class="form-group">
+        {% render_field prescriptionForm.instructions class="form-control" placeholder="Instructions" rows="6" %}
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btnSubmit">Save Prescription</button>
+</form>
+
+{% endblock content %}

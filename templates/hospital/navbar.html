@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hospital Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Bootstrap and Fonts -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- JS for Bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Custom Style -->
+  <style>
+    body {
+      margin: 0;
+      padding-top: 80px;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar-custom {
+      background-color: #ffffff;
+      border-bottom: 2px solid black;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-animated {
+      position: relative;
+      display: flex;
+      gap: 1rem;
+      background: white;
+      border-radius: 9999px;
+      padding: 0.25rem;
+      margin: auto;
+    }
+
+    .nav-animated a {
+      position: relative;
+      z-index: 10;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: white;
+      cursor: pointer;
+      mix-blend-mode: difference;
+      text-decoration: none;
+    }
+
+    .nav-animated .cursor {
+      position: absolute;
+      height: 2rem;
+      background: black;
+      border-radius: 9999px;
+      top: 0.25rem;
+      left: 0;
+      width: 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 0;
+    }
+
+    @media (min-width: 768px) {
+      .nav-animated a {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+      }
+
+      .nav-animated .cursor {
+        height: 3rem;
+      }
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: black !important;
+      margin-right: auto;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+    }
+
+    .nav-brand-wrapper {
+      position: absolute;
+      left: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom">
+    <div class="container-fluid nav-wrapper">
+
+      <!-- Brand on the Left -->
+      <div class="nav-brand-wrapper">
+        <a href="/" class="navbar-brand">Hospital Management</a>
+      </div>
+
+      <!-- Animated Nav Menu Centered -->
+      <ul class="nav-animated" id="nav">
+        <div class="cursor" id="cursor"></div>
+        <a href="/adminclick" onmouseenter="moveCursor(event)">Admin</a>
+        <a href="/doctorclick" onmouseenter="moveCursor(event)">Doctor</a>
+        <a href="/patientclick" onmouseenter="moveCursor(event)">Patient</a>
+        <a href="/aboutus" onmouseenter="moveCursor(event)">About Us</a>
+        <a href="/contactus" onmouseenter="moveCursor(event)">Contact Us</a>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const cursor = document.getElementById("cursor");
+    const nav = document.getElementById("nav");
+
+    function moveCursor(event) {
+      const target = event.target;
+      const { offsetLeft, offsetWidth } = target;
+      cursor.style.width = offsetWidth + "px";
+      cursor.style.left = offsetLeft + "px";
+      cursor.style.opacity = 1;
+    }
+
+    nav.addEventListener("mouseleave", () => {
+      cursor.style.opacity = 0;
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .market-updates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .market-update-gd {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .market-update-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 1rem;
+      padding: 2rem;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .market-update-block h3 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .market-update-block h4 {
+      font-size: 1.2em;
+      margin: 0.3em 0;
+    }
+
+    .market-update-block p {
+      font-size: 0.9em;
+      margin: 0;
+    }
+
+    .market-update-right i {
+      font-size: 3em;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .clr-block-1 {
+      background: #e74c3c;
+    }
+
+    .clr-block-1:hover {
+      background: #c0392b;
+    }
+
+    .clr-block-2 {
+      background: #f39c12;
+    }
+
+    .clr-block-2:hover {
+      background: #d35400;
+    }
+
+    .clr-block-3 {
+      background: #2980b9;
+    }
+
+    .clr-block-3:hover {
+      background: #1c5980;
+    }
+
+    .market-update-left {
+      flex: 1;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="market-updates">
+    <div class="market-update-gd">
+      <div class="market-update-block clr-block-1">
+        <div class="market-update-left">
+          <h3>{{doctorcount}}</h3>
+          <h4>Total Doctor</h4>
+          <p>Approval Required : {{pendingdoctorcount}}</p>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-user-md" style="color: #e74c3c;"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="market-update-gd">
+      <div class="market-update-block clr-block-2">
+        <div class="market-update-left">
+          <h3>{{patientcount}}</h3>
+          <h4>Total Patient</h4>
+          <p>Wants to Admit : {{pendingpatientcount}}</p>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-user-o" style="color: #f39c12;"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="market-update-gd">
+      <div class="market-update-block clr-block-3">
+        <div class="market-update-left">
+          <h3>{{appointmentcount}}</h3>
+          <h4>Total Appointment</h4>
+          <p>Approve Appointments : {{pendingappointmentcount}}</p>
+        </div>
+        <div class="market-update-right">
+          <i class="fa fa-calendar" style="color: #2980b9;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

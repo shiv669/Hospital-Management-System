@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>About Us</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: 'Helvetica Neue', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 800px;
+      padding: 2em;
+      border-radius: 16px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-top: 2em;
+    }
+
+    .header {
+      margin-bottom: 1em;
+      background-color: #000000;
+      color: #ffffff;
+      padding: 1em;
+      border-radius: 16px;
+    }
+
+    .btn {
+      border-radius: 16px;
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #333333;
+    }
+
+    .animated-adjective {
+      display: inline-block;
+      font-weight: bold;
+      color: #0d47a1;
+      font-size: 2.2rem;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      min-height: 60px;
+    }
+
+    .fade-out {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .display-4 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    hr.my-4 {
+      border: none;
+      border-top: 2px solid #ccc;
+      width: 50%;
+      margin: 1.5rem auto;
+    }
+  </style>
+</head>
+
+<body>
+  {% include "hospital/navbar.html" %}
+  <div class="container">
+    <div class="header">
+      <h3>About Us!</h3>
+    </div>
+
+    <h1 class="display-4">
+      Welcome to Our
+      <span id="adjective" class="animated-adjective">Hospital</span>
+    </h1>
+
+    <p class="lead">We are committed to providing exceptional care to our community.</p>
+    <hr class="my-4" />
+    <p>Discover more about our services and team.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+    </p>
+  </div>
+  {% include "hospital/footer.html" %}
+
+  <script>
+    const adjectives = ["Hospital", "Team", "Care", "Mission", "Community", "Excellence"];
+    let index = 0;
+    const el = document.getElementById("adjective");
+
+    setInterval(() => {
+      el.classList.remove("fade-in");
+      el.classList.add("fade-out");
+
+      setTimeout(() => {
+        index = (index + 1) % adjectives.length;
+        el.textContent = adjectives[index];
+        el.classList.remove("fade-out");
+        el.classList.add("fade-in");
+      }, 500);
+    }, 2500);
+  </script>
+</body>
+
+</html>

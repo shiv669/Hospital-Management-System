@@ -1,0 +1,117 @@
+{% extends 'hospital/homebase.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  body {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url("{% static 'images/pexels-pixabay-236380.jpg' %}") no-repeat center center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ffffff, #dddddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions a {
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+
+  .btn-default {
+    background-color: white;
+    color: black;
+  }
+
+  .btn-default:hover {
+    background-color: #ddd;
+  }
+
+  .btn-glow {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+
+  .btn-glow:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 4rem;
+    }
+
+    .hero-description {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Hospital Management System</h1>
+    <p class="hero-description">
+      Streamlining patient care, staff workflows, and hospital efficiency with one smart platform.
+    </p>
+    <div class="hero-actions">
+      <a href="/patientclick" class="btn-default">Take Appointment</a>
+      <a href="/aboutus" class="btn-glow">Learn More</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

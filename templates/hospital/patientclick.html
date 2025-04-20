@@ -1,0 +1,124 @@
+{% extends 'hospital/homebase.html' %}
+
+{% block content %}
+<br><br>
+
+<style>
+  .hero-wrapper {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #e3f2fd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0d47a1;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .subheading {
+    font-size: 1.5rem;
+    color: #1976d2;
+    margin-bottom: 20px;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    color: #37474f;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+  }
+
+  .adjective-container {
+    position: relative;
+    height: 60px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 10px;
+  }
+
+  .adjective-slide {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    animation: slide 10s infinite;
+  }
+
+  .adjective-slide span {
+    height: 60px;
+    line-height: 60px;
+    font-weight: 600;
+    color: #0d47a1;
+    font-size: 3rem;
+  }
+
+  @keyframes slide {
+    0% { transform: translateY(0); }
+    20% { transform: translateY(0); }
+    25% { transform: translateY(-60px); }
+    45% { transform: translateY(-60px); }
+    50% { transform: translateY(-120px); }
+    70% { transform: translateY(-120px); }
+    75% { transform: translateY(-180px); }
+    95% { transform: translateY(-180px); }
+    100% { transform: translateY(0); }
+  }
+
+  .hero-buttons {
+    margin-top: 30px;
+  }
+
+  .hero-buttons a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background-color: #1976d2;
+    transition: background-color 0.3s ease;
+  }
+
+  .hero-buttons a:hover {
+    background-color: #0d47a1;
+  }
+</style>
+
+<div class="hero-wrapper">
+  <h1 class="hero-title">
+    <div class="adjective-container">
+      <div class="adjective-slide">
+        <span>Welcome</span>
+        <span>Valued</span>
+        <span>Strong</span>
+        <span>Cared-for</span>
+        <span>Resilient</span>
+      </div>
+    </div>
+    Patient
+  </h1>
+
+  <div class="subheading">Your health is our top priority</div>
+
+  <p class="hero-description">
+    Join our hospital system to easily book appointments, view your medical records, and connect with your doctors — all in one place. We're here to help you feel better, faster.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="/patientsignup">Register Your Account</a>
+    <a href="/patientlogin">Login</a>
+  </div>
+</div>
+
+{% endblock content %}
