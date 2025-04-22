@@ -24,9 +24,11 @@
    - Ensure Python 3.7.6 is installed (check "Add to Path" during installation).
    - Open a terminal and execute the following commands:
      ```bash
-     pip install django==3.0.5
+     pip install django>=4.2,5.0
      pip install django-widget-tweaks
      pip install xhtml2pdf
+     pip install sqlparse
+     pip install reportlab
      ```
 
 2. **Setup Project:**
