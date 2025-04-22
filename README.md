@@ -33,7 +33,7 @@
    - Download and extract the project zip folder.
    - Navigate to the project folder in the terminal:
      ```bash
-     cd f:\hospital123\hospitalmanagement
+     cd to the directory where manage.py file is there 
      ```
 
 3. **Database Migrations:**
